@@ -1,4 +1,5 @@
 #!/data/data/com.termux/files/usr/bin/env bash
+set -euo pipefail
 # Initialize Termux environment and optionally run a command.
 
 # Standard Termux paths
