@@ -35,3 +35,39 @@ Après configuration, lancez votre script principal. Exemple :
 ```bash
 python script.py
 ```
+
+## Utilisation de `screen` et `lldb`
+
+Termux prend en charge des outils utiles pour la gestion de sessions et le débogage de programmes natifs.
+
+Installez-les si nécessaire :
+
+```bash
+pkg install screen lldb
+```
+
+### `screen` : sessions persistantes
+
+Créer une nouvelle session :
+
+```bash
+screen -S debug
+```
+
+Détacher la session : `Ctrl+a d`
+
+Rejoindre une session existante :
+
+```bash
+screen -r debug
+```
+
+### `lldb` : débogage de binaires
+
+Lancer un programme avec lldb :
+
+```bash
+lldb ./mon_programme
+(lldb) run
+```
+
