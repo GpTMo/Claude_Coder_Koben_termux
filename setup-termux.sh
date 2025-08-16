@@ -3,10 +3,17 @@ set -e
 
 # Script d'installation pour Termux
 # Met à jour pkg, installe les dépendances requises et vérifie l'installation.
+# Vérifie aussi la connexion réseau avant toute mise à jour.
 
 # Vérifie la présence de la commande pkg
 if ! command -v pkg >/dev/null 2>&1; then
   echo "Ce script doit être exécuté dans Termux." >&2
+  exit 1
+fi
+
+# Vérifie la connectivité réseau avant la mise à jour
+if ! ping -c1 google.com >/dev/null 2>&1; then
+  echo "Connexion Internet requise. Veuillez vérifier votre réseau." >&2
   exit 1
 fi
 
