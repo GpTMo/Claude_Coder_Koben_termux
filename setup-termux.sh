@@ -14,7 +14,7 @@ fi
 pkg update -y && pkg upgrade -y
 
 # Dépendances nécessaires
-DEPS=(git curl python nodejs make clang)
+DEPS=(git curl python nodejs make clang screen lldb)
 
 # Installation des dépendances
 pkg install -y "${DEPS[@]}"
