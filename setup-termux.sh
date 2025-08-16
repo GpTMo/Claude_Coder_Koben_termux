@@ -13,16 +13,26 @@ fi
 # Mise à jour et mise à niveau
 pkg update -y && pkg upgrade -y
 
-# Dépendances nécessaires
-DEPS=(git curl python nodejs make clang screen lldb)
+# Dépendances nécessaires et commandes associées
+declare -A PKG_CMDS=(
+  [git]=git
+  [curl]=curl
+  [python]=python
+  [nodejs]=node
+  [make]=make
+  [clang]=clang
+  [screen]=screen
+  [lldb]=lldb
+)
 
 # Installation des dépendances
-pkg install -y "${DEPS[@]}"
+pkg install -y "${!PKG_CMDS[@]}"
 
 # Vérifications post-installation
-for dep in "${DEPS[@]}"; do
-  if ! command -v "$dep" >/dev/null 2>&1; then
-    echo "La dépendance $dep n'a pas été correctement installée." >&2
+for pkg in "${!PKG_CMDS[@]}"; do
+  cmd="${PKG_CMDS[$pkg]}"
+  if ! command -v "$cmd" >/dev/null 2>&1; then
+    echo "La commande $cmd (package $pkg) n'a pas été correctement installée." >&2
     exit 1
   fi
 done
