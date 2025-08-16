@@ -11,14 +11,12 @@ if ! command -v pkg >/dev/null 2>&1; then
   exit 1
 fi
 
-# Vérifie la connectivité réseau avant la mise à jour
-if ! ping -c1 google.com >/dev/null 2>&1; then
+# Mise à jour et mise à niveau (échoue si le réseau est indisponible)
+if ! pkg update -y; then
   echo "Connexion Internet requise. Veuillez vérifier votre réseau." >&2
   exit 1
 fi
-
-# Mise à jour et mise à niveau
-pkg update -y && pkg upgrade -y
+pkg upgrade -y
 
 # Dépendances nécessaires et commandes associées
 declare -A PKG_CMDS=(
