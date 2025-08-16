@@ -20,5 +20,5 @@ fi
 if [ "$#" -gt 0 ]; then
   exec "$@"
 else
-  exec "$SHELL"
+  exec "${SHELL:-$PREFIX/bin/bash}"
 fi
