@@ -71,3 +71,42 @@ lldb ./mon_programme
 (lldb) run
 ```
 
+## Included Scripts
+
+### `setup-termux.sh`
+
+Installe les dépendances requises pour l'environnement Termux.
+
+**Prérequis :** script à exécuter dans Termux avec l'outil `pkg` disponible.
+
+**Commande :**
+
+```bash
+./setup-termux.sh
+```
+
+### `bin/run-termux.sh`
+
+Initialise les variables d'environnement Termux et lance un shell ou une commande fournie.
+
+**Prérequis :** exécuté dans Termux. Les services `termux-wake-lock` et `sshd` sont démarrés s'ils sont installés.
+
+**Commandes :**
+
+```bash
+bin/run-termux.sh            # ouvre un shell
+bin/run-termux.sh python app.py   # exécute une commande
+```
+
+### `scripts/run_screen_debug.sh`
+
+Démarre `lldb` dans une session `screen` détachée pour le débogage.
+
+**Prérequis :** dépend de `screen` et `lldb` installés.
+
+**Commande :**
+
+```bash
+scripts/run_screen_debug.sh [NOM_SESSION]
+```
+
