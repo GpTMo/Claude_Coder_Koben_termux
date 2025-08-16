@@ -12,6 +12,12 @@ if ! command -v screen >/dev/null 2>&1; then
   exit 1
 fi
 
+# Verify that lldb is installed
+if ! command -v lldb >/dev/null 2>&1; then
+  echo "Error: 'lldb' is not installed. Please install it and retry." >&2
+  exit 1
+fi
+
 # Start a detached screen session running lldb
 screen -dmS "$SESSION_NAME" lldb
 
